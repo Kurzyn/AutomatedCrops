@@ -21,8 +21,8 @@ public class FreeFarmStart {
 
         driver.get("https://www.wolnifarmerzy.pl/");
 
-        LoginPage.loginUsername(driver).sendKeys("");
-        LoginPage.loginPassword(driver).sendKeys("");
+        LoginPage.loginUsername(driver).sendKeys(LoginCredentials.loginName());
+        LoginPage.loginPassword(driver).sendKeys(LoginCredentials.secretName());
         new Select (LoginPage.serverNumber(driver)).selectByIndex(10);
         LoginPage.loginButton(driver).click();
 
