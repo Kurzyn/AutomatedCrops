@@ -2,7 +2,10 @@ package FreeFarm;
 
 import java.util.concurrent.TimeUnit;
 
+import FreeFarmPages.FarmPage;
 import FreeFarmPages.LoginPage;
+import FreeFarmPages.MainFarmPage;
+import appModule.PlantAction;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -26,6 +29,7 @@ public class FreeFarmStart {
         new Select (LoginPage.serverNumber(driver)).selectByIndex(10);
         LoginPage.loginButton(driver).click();
 
+        PlantAction.Execute(driver);
 
     }
 }
