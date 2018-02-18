@@ -5,7 +5,10 @@ import java.util.concurrent.TimeUnit;
 import FreeFarmPages.FarmPage;
 import FreeFarmPages.LoginPage;
 import FreeFarmPages.MainFarmPage;
+import appModule.CropAction;
+import appModule.LoginAction;
 import appModule.PlantAction;
+import com.sun.scenario.effect.Crop;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -22,14 +25,12 @@ public class FreeFarmStart {
         ChromeDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        driver.get("https://www.wolnifarmerzy.pl/");
+        driver.get(LoginCredentials.website);
 
-        LoginPage.loginUsername(driver).sendKeys(LoginCredentials.loginName());
-        LoginPage.loginPassword(driver).sendKeys(LoginCredentials.secretName());
-        new Select (LoginPage.serverNumber(driver)).selectByIndex(10);
-        LoginPage.loginButton(driver).click();
-
-        PlantAction.Execute(driver);
+        LoginAction.Execute(driver);
+        MainFarmPage.farmPosition1(driver).click();
+        CropAction.Execute(driver);
+        //PlantAction.Execute(driver);
 
     }
 }
